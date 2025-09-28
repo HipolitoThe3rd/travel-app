@@ -1,78 +1,117 @@
 # Travel App - Spring Boot Project
 
-## Overview
+## Project Overview
 
-Travel App is a web-based application for managing cab bookings and fare calculations for a travel company. Built using Spring Boot, Spring MVC, and MongoDB, it enables users to book cabs, compute fares, and store booking details efficiently with a simple web interface and RESTful services.
+The Travel App is a web-based Java application built with Spring Boot, designed to manage cab bookings and fare calculations for a travel company. It features RESTful microservices, integration with MongoDB, and provides a user-friendly interface powered by HTML and Bootstrap. The application is packaged as an executable JAR for standalone usage.
 
 ## Features
 
-- User-friendly cab booking form with pickup, destination, and cab type options.
-- Fare calculation based on selected cab type and trip parameters.
-- REST API endpoints for booking management and fare computing.
-- MongoDB integration for persistence of bookings and passenger data.
-- Unit testing with JUnit and Mockito for controllers and services.
-- Packaged as an executable JAR for easy deployment and execution.
+- Cab booking with passenger and trip details.
+- Fare calculation based on distance and cab type.
+- REST API endpoints for service integration.
+- Data persistence using MongoDB.
+- Unit Testing with JUnit and Mockito.
+- Responsive UI with Bootstrap.
+- Packaged with Maven for easy build and deployment.
 
-## Technology Stack
+## Prerequisites
 
-- Java 17, Spring Boot 3.x, Spring MVC
-- MongoDB with Spring Data
-- Maven for build and dependency management
-- JUnit and Mockito for testing
-- HTML, CSS (Bootstrap) for front-end interface
+Before you begin, ensure the following software is installed on your machine:
 
-## Getting Started
+- **Java Development Kit (JDK) 17 or higher**  
+  Download and install from [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/).
 
-### Prerequisites
+- **Apache Maven (3.6 or higher recommended)**  
+  - Download from [https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi)  
+  - Follow official installation guide: [https://maven.apache.org/install.html](https://maven.apache.org/install.html)  
+  - Optional: The project includes Maven Wrapper (`mvnw`) which allows Maven to be used without a manual install.
 
-- Java 17 JDK
-- Maven
-- MongoDB running locally or remotely
+- **MongoDB Database**  
+  - Install MongoDB Community Server from [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)  
+  - Ensure it is running locally or configure connection details in `application.properties`.
 
-### Installation & Build
+- **IDE (Optional but recommended)**  
+  - Eclipse IDE with Spring Tools Suite plugin or IntelliJ IDEA Ultimate for easy Spring Boot development.
 
-Clone the repository and navigate to the project directory:
+## Installation and Setup
 
-git clone <repository-url>
-cd travel-app
+1. **Clone the repository** or download the source.
 
-text
+2. **Build the project**  
+   Using Maven wrapper (recommended):  
+   ```
+   ./mvnw clean package      # On Unix/macOS  
+   mvnw.cmd clean package    # On Windows  
+   ```
+   This will compile the code, run tests, and package an executable JAR in `target/`.
 
-Build the executable JAR using Maven Wrapper:
+3. **Run the Application**  
+   After successful build, start the app using:  
+   ```
+   java -jar target/travel-app-0.0.1-SNAPSHOT.jar
+   ```
+   The app runs an embedded Tomcat server on port 8080 by default.
 
-mvnw.cmd clean package
+4. **Access the App**  
+   Open a browser and navigate to:  
+   ```
+   http://localhost:8080/book-cab.html
+   ```  
+   for booking and  
+   ```
+   http://localhost:8080/calculate-fare.html
+   ```  
+   for fare calculation.
 
-text
+## Configuration
 
-### Running the Application
+- **Database Settings**  
+  Configure MongoDB settings and connection URLs in `src/main/resources/application.properties`.
 
-Run the packaged JAR:
+- **Server Port**  
+  To change the port, edit `application.properties` with:  
+  ```
+  server.port=9090
+  ```
 
-java -jar target/travel-app-0.0.1-SNAPSHOT.jar
+## Running Tests
 
-text
+- Run unit tests with Maven via:  
+  ```
+  ./mvnw test
+  ```
 
-Access the UI via [http://localhost:8080](http://localhost:8080) and use the booking and fare calculation pages (replace "8080" with the number of the port that you set in the application.properties file).
-
-## Testing
-
-Run unit tests:
-
-mvnw.cmd test
-
-text
+- Tests utilize JUnit 5 and Mockito frameworks.
 
 ## Project Structure
 
-- `src/main/java`: Java source code including controllers, services, and repositories.
-- `src/main/resources`: Configuration files and static resources.
-- `target/`: Compiled artifacts and build output.
-- `pom.xml`: Maven configuration for dependencies and plugins.
+```
+src/
+ ├── main/
+ │    ├── java/                 # Java source files
+ │    ├── resources/            # Application resources and properties
+ │    └── webapp/               # Static web resources and HTML pages
+ └── test/                      # Unit tests
+pom.xml                        # Maven build configuration
+```
 
-## Contributing
+## Dependencies
 
-Contributions are welcome! Please fork the project and create a pull request for feature additions or bug fixes.
+- Spring Boot Starter Web
+- Spring Boot Starter Data MongoDB
+- Spring Boot Starter Test (JUnit, Mockito)
+- Spring Boot DevTools for development
+
+## Authors
+
+- Developed by Angel Molina
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under MIT License - see the LICENSE file.
+
+## Acknowledgments
+
+- Uses Spring Boot Framework  
+- Bootstrap for responsive UI components  
+- MongoDB for NoSQL data storage
